@@ -210,7 +210,7 @@
 //【腾讯文档】校园问卷集散
 //https://docs.qq.com/smartsheet/DSG1NZGF0RXhWc0pj?tab=ss_3waav7
         // 构造腾讯文档公开API地址
-        const API_URL = `https://docs.qq.com/dop-api/opendata?sheetId=${SHEET_ID}&tab=${TAB_ID}`;
+        const API_URL = `https://docs.qq.com/sheet/${SHEET_ID}.json?tab=${TAB_ID}`;
 
         // 渲染问卷列表
         async function loadSurveys() {
