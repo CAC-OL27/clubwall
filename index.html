@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+    <title>社团问卷墙 · 实时版</title>
+    <style>
+        /* ===== 你最初设计的所有样式，完全保留 ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(145deg, #f6f9fc 0%, #eaf2f8 100%);
+            padding: 2rem 1.5rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 100%;
+        }
+
+        .header {
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+
+        .header h1 {
+            font-size: 2.1rem;
+            font-weight: 700;
+            color: #0b3b5c;
+            border-left: 8px solid #1e88e5;
+            padding-left: 20px;
+            line-height: 1.2;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .header h1 span {
+            background: #1e88e5;
+            color: white;
+            font-size: 1rem;
+            padding: 4px 12px;
+            border-radius: 40px;
+            font-weight: 500;
+        }
+
+        .subhead {
+            color: #2c3e50;
+            font-size: 1.1rem;
+            margin-top: 12px;
+            padding-left: 28px;
+            border-bottom: 1px dashed #b0c4ce;
+            padding-bottom: 12px;
+        }
+
+        .quest-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.4rem;
+        }
+
+        .quest-card {
+            background: #ffffff;
+            border-radius: 28px;
+            padding: 1.5rem 1.8rem;
+            box-shadow: 0 10px 25px -8px rgba(0,50,80,0.12);
+            border: 1px solid rgba(255,255,255,0.6);
+            transition: transform 0.2s ease, box-shadow 0.25s ease;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .quest-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 22px 30px -12px rgba(30,136,229,0.2);
+            border-color: #c3e0f2;
+        }
+
+        .card-index {
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: #1e88e5;
+            line-height: 1;
+            min-width: 38px;
+            text-align: left;
+            letter-spacing: -1px;
+        }
+
+        .card-content {
+            flex: 1;
+        }
+
+        .survey-text {
+            font-size: 1.06rem;
+            line-height: 1.55;
+            color: #1c2e3a;
+            word-break: break-word;
+            background: #fafcff;
+            padding: 0.6rem 1rem;
+            border-radius: 18px;
+            border-left: 4px solid #90caf9;
+        }
+
+        .survey-text a {
+            color: #0d47a1;
+            font-weight: 600;
+            text-decoration: none;
+            border-bottom: 2px solid #ffb74d;
+            padding: 2px 6px;
+            background: #fff9c4;
+            border-radius: 20px;
+            transition: all 0.15s;
+            display: inline-block;
+        }
+
+        .survey-text a:hover {
+            background: #ffe082;
+            border-bottom-color: #e65100;
+            color: #1a237e;
+        }
+
+        .meta-foot {
+            margin-top: 12px;
+            display: flex;
+            justify-content: space-between;
+            color: #6b7b8b;
+            font-size: 0.8rem;
+            padding-left: 6px;
+            border-top: 1px solid #deecf3;
+            padding-top: 12px;
+        }
+
+        .footer-note {
+            margin-top: 48px;
+            text-align: center;
+            color: #4f6f7f;
+            font-size: 0.85rem;
+            border-top: 1px solid #cbdae3;
+            padding-top: 28px;
+        }
+
+        .submit-btn {
+            display: inline-block;
+            background: #1e88e5;
+            color: white;
+            padding: 12px 32px;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: background 0.2s;
+        }
+        .submit-btn:hover {
+            background: #1565c0;
+        }
+
+        @media (max-width: 550px) {
+            body { padding: 1.5rem 1rem; }
+            .header h1 { font-size: 1.8rem; }
+            .quest-card { padding: 1.3rem 1.2rem; }
+            .card-index { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>
+                📮 社团问卷星 
+                <span>实时墙</span>
+            </h1>
+            <div class="subhead">
+                ⚡ 各社团最新发布的问卷 · 点击链接跳转问卷星直接作答
+                <i style="margin-left: 10px; background: #d4edf5; padding: 2px 8px; border-radius: 20px;">实时更新</i>
+            </div>
+            <!-- 社团提交入口按钮（指向你的收集表链接） -->
+            <a href="https://docs.qq.com/form/xxxx" class="submit-btn" target="_blank">➕ 社团提交新问卷</a>
+            <p style="margin-top: 8px; font-size: 0.9rem; color: #6b7b8b;">* 提交后需管理员审核，审核通过自动显示在此页</p>
+        </div>
+
+        <!-- 问卷列表区域（动态渲染） -->
+        <div id="questList" class="quest-list">
+            <p style="text-align: center; color: #6c757d;">⏳ 加载问卷中...</p>
+        </div>
+
+        <div class="footer-note">
+            🏫 校园社团问卷发布中心 · 数据实时同步 <br>
+            © 2026 学生社团联合会
+        </div>
+    </div>
+
+    <script>
+        // ==================== 配置区（必填）====================
+        const SHEET_ID = 'DSG1NZGF0RXhWc0pj';  // 替换成你的 sheetId
+        const TAB_ID   = 't00i2h';             // 替换成你的 tab
+        
+        // 社团提交表单链接（将按钮中的链接也替换成你的收集表链接）
+        const SUBMIT_URL = 'https://docs.qq.com/form/page/DSEdKR3haYktHSFNp';  // ← 替换
+        // ====================================================
+
+        // 构造腾讯文档公开API地址
+        const API_URL = `https://docs.qq.com/dop-api/opendata?sheetId=${SHEET_ID}&tab=${TAB_ID}`;
+
+        // 渲染问卷列表
+        async function loadSurveys() {
+            const listEl = document.getElementById('questList');
+            try {
+                const response = await fetch(API_URL);
+                const data = await response.json();
+                
+                // 腾讯文档返回数据结构：data.records 数组
+                const records = data.records || [];
+                
+                // 提取字段并过滤状态为“已发布”
+                const surveys = records
+                    .map(r => r.fields)          // 字段对象
+                    .filter(item => item.状态 === '已发布' || item.状态 === '已发布') // 仅显示已发布
+                    .sort((a, b) => {            // 按发布时间倒序
+                        const timeA = a.发布时间 || '';
+                        const timeB = b.发布时间 || '';
+                        return timeB.localeCompare(timeA);
+                    });
+
+                if (surveys.length === 0) {
+                    listEl.innerHTML = '<p style="text-align: center; color: #6c757d;">📭 暂无已发布的问卷，请耐心等待</p>';
+                    return;
+                }
+
+                let html = '';
+                surveys.forEach((item, index) => {
+                    const time = item.发布时间 || '近日';
+                    const club = item.社团名称 || '';
+                    const title = item.问卷标题 || '';
+                    const link = item.问卷星链接 || '#';
+                    
+                    html += `
+                        <div class="quest-card">
+                            <div class="card-index">${index + 1}.</div>
+                            <div class="card-content">
+                                <div class="survey-text">
+                                    （${time} ${club}：${title}（<a href="${link}" target="_blank">点击跳转至问卷星相关链接作答</a>））
+                                </div>
+                                <div class="meta-foot">
+                                    <span>⏳ 发布时间: ${time}</span>
+                                    <span>🔗 问卷星</span>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+                listEl.innerHTML = html;
+            } catch (error) {
+                console.error(error);
+                listEl.innerHTML = '<p style="color: #b02a37;">❌ 加载失败，请刷新页面或联系管理员</p>';
+            }
+        }
+
+        // 更新按钮链接（将HTML里写死的替换为配置的）
+        document.querySelector('.submit-btn').href = SUBMIT_URL;
+
+        // 页面加载时执行
+        window.addEventListener('DOMContentLoaded', loadSurveys);
+        // 每60秒自动刷新一次（可选）
+        setInterval(loadSurveys, 60000);
+    </script>
+</body>
+</html>
